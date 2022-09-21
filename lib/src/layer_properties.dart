@@ -1581,6 +1581,60 @@ class LineLayerProperties implements LayerProperties {
   }
 }
 
+class HeatmapLayerProperties implements LayerProperties {
+  final dynamic heatmapWeight;
+  final dynamic heatmapIntensity;
+  final dynamic heatmapColor;
+  final dynamic heatmapRadius;
+  final dynamic heatmapOpacity;
+
+  const HeatmapLayerProperties({
+    this.heatmapWeight,
+    this.heatmapIntensity,
+    this.heatmapColor,
+    this.heatmapRadius,
+    this.heatmapOpacity,
+  });
+
+  HeatmapLayerProperties copyWithin(HeatmapLayerProperties changes) {
+    return HeatmapLayerProperties(
+      heatmapWeight: changes.heatmapWeight ?? heatmapWeight,
+      heatmapIntensity: changes.heatmapIntensity ?? heatmapIntensity,
+      heatmapColor: changes.heatmapColor ?? heatmapColor,
+      heatmapRadius: changes.heatmapRadius ?? heatmapRadius,
+      heatmapOpacity: changes.heatmapOpacity ?? heatmapOpacity,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+
+    void addIfPresent(String fieldName, dynamic value) {
+      if (value != null) {
+        json[fieldName] = value;
+      }
+    }
+
+    addIfPresent('heatmap-weight', heatmapWeight);
+    addIfPresent('heatmap-intensity', heatmapIntensity);
+    addIfPresent('heatmap-color', heatmapColor);
+    addIfPresent('heatmap-radius', heatmapRadius);
+    addIfPresent('heatmap-opacity', heatmapOpacity);
+
+    return json;
+  }
+
+  factory HeatmapLayerProperties.fromJson(Map<String, dynamic> json) {
+    return HeatmapLayerProperties(
+      heatmapWeight: json['heatmap-weight'],
+      heatmapIntensity: json['heatmap-intensity'],
+      heatmapColor: json['heatmap-color'],
+      heatmapRadius: json['heatmap-radius'],
+      heatmapOpacity: json['heatmap-opacity'],
+    );
+  }
+}
+
 class FillLayerProperties implements LayerProperties {
   // Paint Properties
   /// Whether or not the fill should be antialiased.

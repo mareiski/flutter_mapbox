@@ -467,6 +467,18 @@ class MapboxMapController extends ChangeNotifier {
     );
   }
 
+  Future<void> addHeatmapLayer(
+      String sourceId, String layerId, HeatmapLayerProperties properties,
+      {String? belowLayerId,
+      String? sourceLayer,
+      double? minzoom,
+      double? maxzoom,
+      dynamic filter,
+      bool enableInteraction = true}) async {
+    await _mapboxGlPlatform.addHeatmapLayer(
+        sourceId, layerId, properties.toJson());
+  }
+
   /// Add a circle layer to the map with the given properties
   ///
   /// Consider using [addLayer] for an unified layer api.

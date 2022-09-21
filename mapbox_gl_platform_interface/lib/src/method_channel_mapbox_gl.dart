@@ -685,4 +685,22 @@ class MethodChannelMapboxGl extends MapboxGlPlatform {
 
   @override
   void resizeWebMap() {}
+
+  @override
+  Future<void> addHeatmapLayer(
+      String sourceId, String layerId, Map<String, dynamic> properties,
+      {String? belowLayerId,
+      String? sourceLayer,
+      double? minzoom,
+      double? maxzoom}) async {
+    await _channel.invokeMethod('heatmapLayer#add', <String, dynamic>{
+      'sourceId': sourceId,
+      'layerId': layerId,
+      'belowLayerId': belowLayerId,
+      'minzoom': minzoom,
+      'maxzoom': maxzoom,
+      'properties': properties
+          .map((key, value) => MapEntry<String, String>(key, jsonEncode(value)))
+    });
+  }
 }

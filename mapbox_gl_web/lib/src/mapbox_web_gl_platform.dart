@@ -992,4 +992,15 @@ class MapboxWebGlPlatform extends MapboxGlPlatform
   void forceResizeWebMap() {
     _map.resize();
   }
+
+  @override
+  Future<void> addHeatmapLayer(
+      String sourceId, String layerId, Map<String, dynamic> properties,
+      {String? belowLayerId,
+      String? sourceLayer,
+      double? minzoom,
+      double? maxzoom}) {
+    // TODO: implement addHeatmapLayer
+    throw UnimplementedError();
+  }
 }
