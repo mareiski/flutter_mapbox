@@ -994,7 +994,7 @@ final class MapboxMapController
         final Double minzoom = call.argument("minzoom");
         final Double maxzoom = call.argument("maxzoom");
         final PropertyValue[] properties = LayerPropertyConverter
-            .interpretHillshadeLayerProperties(call.argument("properties"));
+            .interpretHeatmapLayerProperties(call.argument("properties"));
         addHeatmapLayer(
             layerId,
             sourceId,
